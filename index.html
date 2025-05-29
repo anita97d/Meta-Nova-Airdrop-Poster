@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaNova Airdrop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d1a; /* Dark background similar to the image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #ffffff;
+            padding: 1rem;
+        }
+        .container {
+            background: linear-gradient(180deg, rgba(26, 26, 46, 0.8) 0%, rgba(13, 13, 26, 0.8) 100%);
+            border-radius: 1.5rem; /* More rounded corners */
+            padding: 2rem;
+            max-width: 400px; /* Max width for better mobile display */
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+        .time-box {
+            background: linear-gradient(90deg, #6a0dad, #8a2be2); /* Purple gradient */
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; /* Pill shape */
+            font-weight: 600;
+            font-size: 0.875rem; /* text-sm */
+            margin-bottom: 2rem;
+            display: inline-block; /* To make it fit its content */
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.5);
+        }
+        .metanova-logo {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            background: linear-gradient(45deg, #8a2be2, #007bff); /* Blue-purple gradient */
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+        }
+        .metanova-logo svg {
+            fill: white;
+            width: 60%;
+            height: 60%;
+        }
+        .verify-button {
+            background: linear-gradient(90deg, #8a2be2, #6a0dad); /* Purple gradient */
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem; /* rounded-xl */
+            font-weight: 700;
+            font-size: 1.125rem; /* text-lg */
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+            border: none;
+            width: 100%; /* Full width button */
+        }
+        .verify-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+        }
+        .qr-code-box {
+            background-color: #ffffff;
+            padding: 0.75rem;
+            border-radius: 0.75rem; /* rounded-xl */
+            display: inline-block;
+            margin-top: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        .wallet-address {
+            font-size: 0.875rem; /* text-sm */
+            word-break: break-all; /* Ensures long addresses wrap */
+            padding: 0 1rem;
+            margin-top: 1rem;
+            color: #a0aec0; /* Lighter grey for address */
+        }
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+                border-radius: 1rem;
+            }
+            .time-box {
+                font-size: 0.75rem; /* text-xs */
+                padding: 0.4rem 0.8rem;
+            }
+            .metanova-logo {
+                width: 40px;
+                height: 40px;
+            }
+            h1 {
+                font-size: 1.75rem; /* text-3xl */
+            }
+            .text-xl {
+                font-size: 1.125rem; /* text-lg */
+            }
+            .verify-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            .wallet-address {
+                font-size: 0.75rem; /* text-xs */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="time-box">
+            01:14:36
+        </div>
+
+        <div class="metanova-logo">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+        </div>
+        <h1 class="text-4xl font-bold mb-1">MetaNova</h1>
+        <p class="text-lg text-purple-400 mb-6">PHASE 2</p>
+
+        <p class="text-xl font-semibold mb-2">WALLET SELECTED FOR AIRDROP</p>
+        <p class="text-3xl font-extrabold mb-4 flex items-center justify-center">
+            <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="currentColor" style="color: #f7931a;">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5v-2h1.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5H9v-2h3V7h-3V5.5h-1.5V7h-1.5v2h1.5v2.5c0 1.38 1.12 2.5 2.5 2.5H12v2h-1.5z"/>
+            </svg>
+            0.012 BTC (<span class="text-green-400 ml-1">€ 710</span>)
+        </p>
+        <p class="text-2xl font-bold text-blue-400 mb-6">$ MNV</p>
+
+        <button class="verify-button">
+            VERIFY WALLET NOW
+        </button>
+
+        <p class="text-md text-gray-400 mb-2">WALLET ADDRESS FOR VERIFICATION</p>
+        <div class="qr-code-box">
+            <img id="qrCodeImage" src="" alt="QR Code" class="w-32 h-32 md:w-40 md:h-40 rounded-md">
+        </div>
+        <p id="walletAddressText" class="wallet-address">
+            bc1q4ut0e0fjpmp2324lv4mrrlv7qvjlqs38rpsp3n
+        </p>
+    </div>
+
+    <script>
+        // Get the wallet address from the HTML element
+        const newWalletAddress = document.getElementById('walletAddressText').textContent.trim();
+        const qrCodeImage = document.getElementById('qrCodeImage');
+
+        // Construct the QR code API URL
+        // Using a reliable QR code API (qrserver.com)
+        const qrCodeApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(newWalletAddress)}`;
+
+        // Set the src of the QR code image
+        qrCodeImage.src = qrCodeApiUrl;
+
+        // Optional: Add an error handler for the QR code image
+        qrCodeImage.onerror = function() {
+            console.error("Failed to load QR code image. Please check the wallet address or API.");
+            // You could set a placeholder image here if desired
+            qrCodeImage.src = "https://placehold.co/150x150/FF0000/FFFFFF?text=Error";
+        };
+    </script>
+</body>
+</html>
